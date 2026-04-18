@@ -113,7 +113,7 @@ const AuditLogs = () => {
         setLogs(Array.isArray(data) ? data : []);
       }
     } catch (error) {
-      console.error("Error fetching audit logs:", error);
+      console.error("Error fetching audit logs:");
     } finally {
       setLoading(false);
     }

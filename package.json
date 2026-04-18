@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@datadog/browser-rum": "^6.32.0",
+    "@datadog/browser-rum-react": "^6.32.0",
     "@fontsource-variable/geist": "^5.2.8",
     "@marsidev/react-turnstile": "^1.4.2",
     "@tailwindcss/vite": "^4.1.12",

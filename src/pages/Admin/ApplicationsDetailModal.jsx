@@ -25,7 +25,7 @@ const ApplicationDetailModal = ({ isOpen, onClose, application }) => {
         setStages(data.stages);
       }
     } catch (error) { 
-      console.error("Stage Fetch Error:", error); 
+      console.error("Stage Fetch Error:"); 
     } finally { 
       setLoading(false);
       setIsSystemLocked(false); 

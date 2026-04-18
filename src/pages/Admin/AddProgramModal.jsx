@@ -121,7 +121,7 @@ const AddProgramModal = ({ isOpen, onClose, onSuccess, authFetch }) => {
             setFetchError("Failed to load departments");
           }
         } catch (err) {
-          console.error(err);
+          console.error("An unexpected error occurred.");
           setFetchError("Network error loading lists");
         } finally {
           setIsLoadingDepts(false);

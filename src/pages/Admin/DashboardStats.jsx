@@ -34,10 +34,10 @@ const DashboardStats = () => {
             });
           }
         } else {
-          console.error("Stats API failed:", response.statusText);
+          console.error("Stats API failed:");
         }
       } catch (error) {
-        console.error("Network Error:", error);
+        console.error("Network Error:");
       } finally {
         setLoading(false);
       }

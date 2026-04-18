@@ -47,8 +47,6 @@ const AccountsDashboard = () => {
       const data = res.data;
       
       // DEBUG: Verify raw data in console if the list is unexpectedly empty
-      console.log("Accounts Dashboard Raw Data:", data);
-
       const mappedApplications = Array.isArray(data)
         ? data.map(app => {
             // Standardize any non-finalized status to "Pending"
@@ -75,7 +73,7 @@ const AccountsDashboard = () => {
 
       setApplications(mappedApplications);
     } catch (err) {
-      console.error('Failed to fetch Accounts applications:', err);
+      console.error('Failed to fetch Accounts applications:');
     } finally {
       setIsLoading(false);
     }
@@ -111,7 +109,7 @@ const AccountsDashboard = () => {
 
       setSelectedApplication(enrichedApp);
     } catch (err) {
-      console.error('Failed to fetch enriched accounts details:', err);
+      console.error('Failed to fetch enriched accounts details:');
       setSelectedApplication(listApp);
     } finally {
       setIsViewLoading(false);

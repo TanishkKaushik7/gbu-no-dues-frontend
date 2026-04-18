@@ -1,21 +1,28 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { AlertTriangle, Loader2 } from 'lucide-react';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { AlertTriangle, Loader2 } from "lucide-react";
 
-const DeleteConfirmModal = ({ isOpen, onClose, onConfirm, userName, isLoading }) => {
+const DeleteConfirmModal = ({
+  isOpen,
+  onClose,
+  onConfirm,
+  userName,
+  isLoading,
+  errorMessage,
+}) => {
   return (
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
           {/* Backdrop */}
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
             className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
           />
-          
+
           {/* Modal Card */}
           <motion.div
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -27,10 +34,21 @@ const DeleteConfirmModal = ({ isOpen, onClose, onConfirm, userName, isLoading })
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-red-100 mb-4">
                 <AlertTriangle className="h-7 w-7 text-red-600" />
               </div>
-              <h3 className="text-lg font-bold text-slate-800">Confirm Deletion</h3>
+              <h3 className="text-lg font-bold text-slate-800">
+                Confirm Deletion
+              </h3>
               <p className="text-sm text-slate-500 mt-2">
-                Are you sure you want to remove <span className="font-bold text-slate-700">{userName}</span>? This action cannot be undone.
+                Are you sure you want to remove{" "}
+                <span className="font-bold text-slate-700">{userName}</span>?
+                This action cannot be undone.
               </p>
+              {errorMessage && (
+                <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-left">
+                  <p className="text-xs font-bold text-red-700">
+                    {errorMessage}
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="flex border-t border-slate-100">
@@ -45,7 +63,11 @@ const DeleteConfirmModal = ({ isOpen, onClose, onConfirm, userName, isLoading })
                 disabled={isLoading}
                 className="flex-1 px-4 py-4 text-sm font-bold text-red-600 hover:bg-red-50 transition-colors border-l border-slate-100 flex items-center justify-center gap-2"
               >
-                {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Delete User"}
+                {isLoading ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  "Delete User"
+                )}
               </button>
             </div>
           </motion.div>

@@ -26,7 +26,7 @@ const SystemMetricsWidget = () => {
         setRedis(await redisRes.json());
       }
     } catch (error) {
-      console.error("Health check failed", error);
+      console.error("Health check failed");
     } finally {
       setLoading(false);
     }

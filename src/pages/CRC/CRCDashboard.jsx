@@ -47,8 +47,6 @@ const CRCDashboard = () => {
       const data = res.data;
       
       // DEBUG: Verify raw data in console if list is empty
-      console.log("CRC Dashboard Raw Data:", data);
-
       const mappedApplications = Array.isArray(data)
         ? data.map(app => {
             // Standardize any non-finalized status to "Pending"
@@ -75,7 +73,7 @@ const CRCDashboard = () => {
 
       setApplications(mappedApplications);
     } catch (err) {
-      console.error('Failed to fetch CRC applications:', err);
+      console.error('Failed to fetch CRC applications:');
     } finally {
       setIsLoading(false);
     }
@@ -111,7 +109,7 @@ const CRCDashboard = () => {
 
       setSelectedApplication(enrichedApp);
     } catch (err) {
-      console.error('Failed to fetch enriched CRC details:', err);
+      console.error('Failed to fetch enriched CRC details:');
       setSelectedApplication(listApp);
     } finally {
       setIsViewLoading(false);

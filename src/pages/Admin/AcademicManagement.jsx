@@ -60,7 +60,7 @@ const AcademicManagement = () => {
         setSpecializations(specData);
       }
     } catch (error) {
-      console.error("Failed to fetch academic data:", error);
+      console.error("Failed to fetch academic data:");
     } finally {
       setLoading(false);
     }

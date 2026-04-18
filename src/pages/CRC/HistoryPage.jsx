@@ -26,7 +26,7 @@ const HistoryPage = () => {
         setHistory(data);
       }
     } catch (error) {
-      console.error("Error fetching history:", error);
+      console.error("Error fetching history:");
     } finally {
       setIsLoading(false);
     }

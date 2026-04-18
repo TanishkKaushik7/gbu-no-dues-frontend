@@ -123,7 +123,7 @@ const CreateDepartmentModal = ({ isOpen, onClose, onSuccess }) => {
             console.error("Failed to fetch schools");
           }
         } catch (err) {
-          console.error("Error loading schools:", err);
+          console.error("Error loading schools:");
         } finally {
           setSchoolsLoading(false);
         }

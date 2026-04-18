@@ -22,7 +22,6 @@ import {
   Menu,
   X,
   ShieldCheck,
-  // New icons for workflow
   UserCheck,
   BookOpen,
   Home,
@@ -132,21 +131,45 @@ const DepartmentNode = ({ icon: Icon, name }) => (
   </div>
 );
 
+// --- UPDATED ANIMATED BEAM ---
 const AnimatedBeam = ({ delay = "0s", color = "cyan" }) => (
   <>
     {/* Desktop Horizontal Beam */}
-    <div className="relative w-6 lg:w-10 h-[2px] bg-white/10 hidden md:block rounded-full overflow-hidden shrink-0">
-      <div
-        className={`absolute top-0 left-0 w-[200%] h-full bg-gradient-to-r from-transparent ${beamColors[color]} to-transparent animate-flow-h opacity-80`}
-        style={{ animationDelay: delay }}
-      ></div>
+    <div className="relative w-6 lg:w-10 h-[2px] hidden md:block shrink-0">
+      {/* Background static dashed line */}
+      <div 
+        className="absolute inset-0" 
+        style={{ backgroundImage: 'linear-gradient(90deg, rgba(255,255,255,0.15) 50%, transparent 50%)', backgroundSize: '8px 2px' }} 
+      />
+      {/* Animated glowing packet traveling along the line */}
+      <div 
+        className="absolute inset-0 overflow-hidden" 
+        style={{ WebkitMaskImage: 'linear-gradient(90deg, black 50%, transparent 50%)', WebkitMaskSize: '8px 2px' }}
+      >
+        <div
+          className={`absolute top-0 left-0 w-[200%] h-full bg-gradient-to-r from-transparent ${beamColors[color]} to-transparent animate-flow-h opacity-100`}
+          style={{ animationDelay: delay }}
+        ></div>
+      </div>
     </div>
+    
     {/* Mobile Vertical Beam */}
-    <div className="relative w-[2px] h-8 bg-white/10 md:hidden rounded-full overflow-hidden shrink-0 my-1">
-      <div
-        className={`absolute top-0 left-0 w-full h-[200%] bg-gradient-to-b from-transparent ${beamColors[color]} to-transparent animate-flow-v opacity-80`}
-        style={{ animationDelay: delay }}
-      ></div>
+    <div className="relative w-[2px] h-8 md:hidden my-1 shrink-0">
+      {/* Background static dashed line */}
+      <div 
+        className="absolute inset-0" 
+        style={{ backgroundImage: 'linear-gradient(180deg, rgba(255,255,255,0.15) 50%, transparent 50%)', backgroundSize: '2px 8px' }} 
+      />
+      {/* Animated glowing packet traveling along the line */}
+      <div 
+        className="absolute inset-0 overflow-hidden" 
+        style={{ WebkitMaskImage: 'linear-gradient(180deg, black 50%, transparent 50%)', WebkitMaskSize: '2px 8px' }}
+      >
+        <div
+          className={`absolute top-0 left-0 w-full h-[200%] bg-gradient-to-b from-transparent ${beamColors[color]} to-transparent animate-flow-v opacity-100`}
+          style={{ animationDelay: delay }}
+        ></div>
+      </div>
     </div>
   </>
 );

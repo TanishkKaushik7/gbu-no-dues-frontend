@@ -47,8 +47,6 @@ const LibraryDashboard = () => {
       const data = res.data;
       
       // DEBUG: View raw response in console if list is empty
-      console.log("Library Dashboard Raw Data:", data);
-
       const mappedApplications = Array.isArray(data)
         ? data.map(app => {
             // Greedy mapping: treat anything actionable as "Pending"
@@ -75,7 +73,7 @@ const LibraryDashboard = () => {
 
       setApplications(mappedApplications);
     } catch (err) {
-      console.error('Failed to fetch Library applications:', err);
+      console.error('Failed to fetch Library applications:');
     } finally {
       setIsLoading(false);
     }
@@ -111,7 +109,7 @@ const LibraryDashboard = () => {
 
       setSelectedApplication(enrichedApp);
     } catch (err) {
-      console.error('Failed to fetch enriched library details:', err);
+      console.error('Failed to fetch enriched library details:');
       setSelectedApplication(listApp);
     } finally {
       setIsViewLoading(false);

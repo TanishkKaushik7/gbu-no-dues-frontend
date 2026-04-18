@@ -17,7 +17,7 @@ const RecentLogsWidget = ({ onNavigate }) => {
           setLogs(Array.isArray(data) ? data : []);
         }
       } catch (error) {
-        console.error("Error fetching recent logs:", error);
+        console.error("Error fetching recent logs:");
       } finally {
         setLoading(false);
       }

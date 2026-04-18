@@ -68,7 +68,7 @@ const HostelDashboard = () => {
 
       setApplications(mappedApplications);
     } catch (err) {
-      console.error('Failed to fetch Hostel applications:', err);
+      console.error('Failed to fetch Hostel applications:');
     } finally {
       setIsLoading(false);
     }
@@ -103,7 +103,7 @@ const HostelDashboard = () => {
 
       setSelectedApplication(enrichedApp);
     } catch (err) {
-      console.error('Failed to fetch details:', err);
+      console.error('Failed to fetch details:');
       setSelectedApplication(listApp);
     } finally {
       setIsViewLoading(false);
