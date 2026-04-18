@@ -73,7 +73,7 @@ const SchoolDashboard = () => {
       setApplications(mappedApplications);
       // ❌ REMOVED: Popup Logic
     } catch (err) {
-      console.error('Failed to fetch school applications:', err);
+      console.error('Failed to fetch school applications:');
     } finally {
       setIsLoading(false);
     }
@@ -108,7 +108,7 @@ const SchoolDashboard = () => {
 
       setSelectedApplication(enrichedApp);
     } catch (err) {
-      console.error('Failed to fetch details:', err);
+      console.error('Failed to fetch details:');
       setSelectedApplication(listApp);
     } finally {
       setIsViewLoading(false);

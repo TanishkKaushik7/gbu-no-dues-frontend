@@ -139,7 +139,7 @@ const SystemLogs = () => {
         setLogs(Array.isArray(data) ? data : []);
       }
     } catch (error) {
-      console.error("Audit Fetch Error:", error);
+      console.error("Audit Fetch Error:");
     } finally {
       setLoading(false);
     }

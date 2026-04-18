@@ -44,8 +44,6 @@ const HODDashboard = () => {
       });
 
       const data = res.data;
-      console.log("HOD Dashboard Raw Data:", data);
-
       const mappedApplications = Array.isArray(data)
         ? data.map(app => {
             const rawStatus = (app.status || '').toLowerCase();
@@ -70,7 +68,7 @@ const HODDashboard = () => {
 
       setApplications(mappedApplications);
     } catch (err) {
-      console.error('Failed to fetch HOD applications:', err);
+      console.error('Failed to fetch HOD applications:');
     } finally {
       setIsLoading(false);
     }
@@ -105,7 +103,7 @@ const HODDashboard = () => {
 
       setSelectedApplication(enrichedApp);
     } catch (err) {
-      console.error('Failed to fetch enriched application details:', err);
+      console.error('Failed to fetch enriched application details:');
       setSelectedApplication(listApp);
     } finally {
       setIsViewLoading(false);

@@ -73,7 +73,7 @@ const OfficeDashboard = () => {
 
       setApplications(mappedApplications);
     } catch (err) {
-      console.error('Failed to fetch Office applications:', err);
+      console.error('Failed to fetch Office applications:');
     } finally {
       setIsLoading(false);
     }
@@ -108,7 +108,7 @@ const OfficeDashboard = () => {
 
       setSelectedApplication(enrichedApp);
     } catch (err) {
-      console.error('Failed to fetch enriched office details:', err);
+      console.error('Failed to fetch enriched office details:');
       setSelectedApplication(listApp);
     } finally {
       setIsViewLoading(false);

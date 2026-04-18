@@ -47,8 +47,6 @@ const SportsDashboard = () => {
       const data = res.data;
       
       // DEBUG: Verify raw response in console if list is unexpectedly empty
-      console.log("Sports Dashboard Raw Data:", data);
-
       const mappedApplications = Array.isArray(data)
         ? data.map(app => {
             // Greedy mapping: treat anything actionable as "Pending"
@@ -72,7 +70,7 @@ const SportsDashboard = () => {
 
       setApplications(mappedApplications);
     } catch (err) {
-      console.error('Failed to fetch Sports applications:', err);
+      console.error('Failed to fetch Sports applications:');
     } finally {
       setIsLoading(false);
     }
@@ -108,7 +106,7 @@ const SportsDashboard = () => {
 
       setSelectedApplication(enrichedApp);
     } catch (err) {
-      console.error('Failed to fetch enriched sports details:', err);
+      console.error('Failed to fetch enriched sports details:');
       setSelectedApplication(listApp);
     } finally {
       setIsViewLoading(false);

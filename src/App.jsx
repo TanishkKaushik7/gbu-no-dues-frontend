@@ -6,7 +6,8 @@ import React, {
   lazy,
   Suspense,
 } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { datadogRum } from "@datadog/browser-rum";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import {
   StudentAuthProvider,
@@ -193,6 +194,49 @@ const RoleRoutes = ({ Dashboard, HistoryComponent }) => (
   </ProtectedRoute>
 );
 
+const normalizeRouteForRum = (pathname) => {
+  if (!pathname) return "/";
+
+  return (
+    pathname
+      .split("/")
+      .map((segment, index) => {
+        if (index === 0 || !segment) return segment;
+        if (/^\d+$/.test(segment)) return ":id";
+        if (
+          /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+            segment,
+          )
+        ) {
+          return ":uuid";
+        }
+        if (segment.length >= 24 && /^[A-Za-z0-9_-]+$/.test(segment)) {
+          return ":token";
+        }
+        return segment;
+      })
+      .join("/") || "/"
+  );
+};
+
+const DatadogViewTracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const routePattern = normalizeRouteForRum(location.pathname);
+
+    datadogRum.startView({
+      name: routePattern,
+      context: {
+        route_pattern: routePattern,
+        route_path: location.pathname,
+      },
+    });
+  }, [location.pathname]);
+
+  return null;
+};
+
 /* -------------------------------------------------------------------------- */
 /* ROOT APP COMPONENT                                                         */
 /* -------------------------------------------------------------------------- */
@@ -204,6 +248,7 @@ function App() {
         <ApplicationProvider>
           <SessionManager>
             <Suspense fallback={<PageLoader />}>
+              <DatadogViewTracker />
               <Routes>
                 {/* PUBLIC ENTRY & UTILITIES */}
                 <Route path="/" element={<MainPage />} />
@@ -221,7 +266,7 @@ function App() {
                 <Route path="/student/login" element={<StudentLogin />} />
                 <Route path="/student/register" element={<StudentRegister />} />
                 <Route
-                  path="/student/dashboard"
+                  path="/student/*"
                   element={
                     <StudentProtectedRoute>
                       <StudentDashboard />

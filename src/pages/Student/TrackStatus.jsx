@@ -204,7 +204,7 @@ const TrackStatus = () => {
       });
       setWorkflow({ top, parallel, bottom });
     } catch (err) { 
-      console.error(err); 
+      console.error("An unexpected error occurred."); 
       setIsNoApplication(true);
     } finally { 
       setLoading(false); 

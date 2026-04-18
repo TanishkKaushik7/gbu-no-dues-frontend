@@ -48,8 +48,6 @@ const LabDashboard = () => {
       const rawData = res.data?.data || res.data || [];
       
       // DEBUG: View raw response in console if list is empty
-      console.log("Lab Dashboard Raw Data:", rawData);
-
       const mappedApplications = Array.isArray(rawData)
         ? rawData.map(app => {
             // Greedy mapping: treat anything actionable as "Pending"
@@ -76,7 +74,7 @@ const LabDashboard = () => {
 
       setApplications(mappedApplications);
     } catch (err) {
-      console.error('Failed to fetch Lab applications:', err);
+      console.error('Failed to fetch Lab applications:');
     } finally {
       setIsLoading(false);
     }
@@ -114,7 +112,7 @@ const LabDashboard = () => {
 
       setSelectedApplication(enrichedApp);
     } catch (err) {
-      console.error('Failed to fetch enriched details:', err);
+      console.error('Failed to fetch enriched details:');
       setSelectedApplication(listApp);
     } finally {
       setIsViewLoading(false);

@@ -77,7 +77,7 @@ const ApplicationInspectionModal = ({
         }
       }
     } catch (error) {
-      console.error("Failed to load application data", error);
+      console.error("Failed to load application data");
     } finally {
       setLoading(false);
     }

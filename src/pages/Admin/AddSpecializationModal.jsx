@@ -118,7 +118,7 @@ const AddSpecializationModal = ({ isOpen, onClose, onSuccess, authFetch }) => {
             setDeptOptions(data);
           }
         } catch (err) {
-          console.error(err);
+          console.error("An unexpected error occurred.");
           setFetchError("Failed to load departments");
         } finally {
           setIsLoadingDepts(false);
@@ -149,7 +149,7 @@ const AddSpecializationModal = ({ isOpen, onClose, onSuccess, authFetch }) => {
                 setProgOptions(data);
             }
         } catch (err) {
-            console.error(err);
+            console.error("An unexpected error occurred.");
         } finally {
             setIsLoadingProgs(false);
         }

@@ -133,7 +133,7 @@ const ApplicationManagement = () => {
         setApplications([]);
       }
     } catch (error) {
-      console.error("Fetch error:", error);
+      console.error("Fetch error:");
       setApplications([]);
     } finally {
       setLoading(false);

@@ -69,7 +69,7 @@ const DynamicDashboard = () => {
 
       setApplications(mappedApplications);
     } catch (err) {
-      console.error('Failed to fetch applications:', err);
+      console.error('Failed to fetch applications:');
     } finally {
       setIsLoading(false);
     }
@@ -104,7 +104,7 @@ const DynamicDashboard = () => {
 
       setSelectedApplication(enrichedApp);
     } catch (err) {
-      console.error('Failed to fetch details:', err);
+      console.error('Failed to fetch details:');
       setSelectedApplication(listApp);
     } finally {
       setIsViewLoading(false);
